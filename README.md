@@ -10,8 +10,8 @@ After installation npm packeges inside backend diractory run `node index.js` and
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-# How to make build for deployee on apache tomcat
+## How to make build to deployee on apache tomcat
 Run `ng build --base-href /dashboard/`
-## Further help
 
+## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
