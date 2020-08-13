@@ -25,6 +25,8 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
       </mat-form-field>
 
+      <loader *ngIf="!dataSource"></loader>
+
       <table mat-table [dataSource]="dataSource" *ngIf="dataSource" class="mat-elevation-z8">
         <!-- dateOfBirth Column -->
         <ng-container matColumnDef="dateOfBirth">

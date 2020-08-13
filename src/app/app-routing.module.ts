@@ -11,14 +11,11 @@ const appRoutes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'employee',
-        component: EmployeeComponent
-      },
+
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'employee', component: EmployeeComponent },
+
       {
         path: 'users',
         children: [

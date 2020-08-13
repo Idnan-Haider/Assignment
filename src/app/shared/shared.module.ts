@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 const modules = [
     CommonModule,
@@ -53,7 +54,8 @@ const modules = [
 ];
 
 const components = [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    LoaderComponent
 ];
 @NgModule({
     declarations: [...components],

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatDialog, MatTableDataSource } from '@angular/material';
+
 import { GenericService } from 'src/app/shared/services/generic.service';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -18,7 +20,9 @@ export class UserListComponent {
    * @param {GenericService} genericService
    * @memberof UserListComponent
    */
-  constructor(private genericService: GenericService) {
+  constructor(private genericService: GenericService,
+    public matDialog: MatDialog,
+  ) {
     this.getAllUsers();
   }
 
@@ -44,21 +48,33 @@ export class UserListComponent {
    * @param {Event} event
    * @memberof EmployeeComponent
    */
-  applyFilter(event: Event) {
+  public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  delete(id) {
-    this.genericService.delete(`deleteUser/${id}`).subscribe((res: any) => {
-      if (!res.error) {
-        this.getAllUsers();
-
+  /**
+   *
+   *
+   * @param {*} id
+   * @memberof UserListComponent
+   */
+  public delete(id) {
+    this.matDialog.open(ConfirmDialogComponent, {
+      width: '450px',
+      data: { message: 'Do you want Delete it?' }
+    }).afterClosed().subscribe((accept: boolean) => {
+      if (accept) {
+        this.genericService.delete(`deleteUser/${id}`).subscribe((res: any) => {
+          if (!res.error) {
+            this.getAllUsers();
+          }
+        }, (error) => {
+          console.error(error);
+        });
       }
-    }, (error) => {
-
-      console.error(error);
     });
+
   }
 
 

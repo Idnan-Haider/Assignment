@@ -13,10 +13,9 @@
       <div fxLayout="column" fxLayoutAlign="start start">
 
         <div *ngIf="pageType ==='view'">
-          <h4>
-            {{user?.name}}
-          </h4>
+          <h4> {{user?.name}} </h4>
         </div>
+        
         <div *ngIf="pageType ==='update'">
           {{'Update'}} <small>({{user?.name}})</small>
         </div>
