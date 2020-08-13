@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.p-8 {
+  padding: 8px;
+}
+
+.options {
+  opacity: 0;
+  display: flex;
+  justify-content: flex-end;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.hover-effect:hover .options {
+  visibility: visible;
+  opacity: 1;
+}
+
+.list-header {
+  color: black !important;
+  font-weight: 500;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.p-20 {
+  padding: 20px;
+}

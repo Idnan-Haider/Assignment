@@ -1,0 +1,106 @@
+<!-- CENTER -->
+<div class="p-20" fxLayout="column" fxLayoutGap="15px">
+
+  <!-- HEADER -->
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+
+      <button mat-icon-button [routerLink]="'/users'">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <div fxLayout="column" fxLayoutAlign="start start">
+
+        <div *ngIf="pageType ==='view'">
+          <h4>
+            {{user?.name}}
+          </h4>
+        </div>
+        <div *ngIf="pageType ==='update'">
+          {{'Update'}} <small>({{user?.name}})</small>
+        </div>
+
+        <div *ngIf="pageType ==='create'">
+          {{'New User'}}
+        </div>
+
+      </div>
+
+    </div>
+
+    <button mat-raised-button [disabled]="fg.invalid" *ngIf="pageType ==='create'" (click)="saveData(fg.getRawValue())">
+      <span>{{'Add'}}</span>
+    </button>
+
+    <button mat-raised-button [disabled]="fg.invalid || fg.pristine" *ngIf="pageType ==='update'"
+      (click)="saveData(fg.getRawValue())">
+      <span>{{'Update'}}</span>
+    </button>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT CARD -->
+  <mat-card>
+
+    <mat-card-content>
+      <form [formGroup]="fg" fxLayout="column" fxFlex>
+
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex="49" appearance="outline" floatLabel="always">
+            <mat-label>{{'Name'}}</mat-label>
+            <input matInput [placeholder]="'Name'" name="name" formControlName="name" required>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="49" appearance="outline" floatLabel="always" class="w-100-p">
+            <mat-label>{{'CNIC'}}</mat-label>
+            <input matInput placeholder="0000-0000-0000-0000" name="CNIC" formControlName="cnic" required>
+            <mat-icon matSuffix>portrait</mat-icon>
+          </mat-form-field>
+
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+
+          <mat-form-field fxFlex="49" appearance="outline" floatLabel="always">
+            <mat-label>{{'Gender'}}</mat-label>
+            <mat-select formControlName="gender" required>
+              <mat-option *ngFor="let gen of gender" [value]="gen">
+                {{ gen }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="49" appearance="outline" floatLabel="always">
+            <mat-label>{{'Date of Birth'}}</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+
+          <mat-form-field fxFlex="49" appearance="outline" floatLabel="always">
+            <mat-label>{{'Email'}}</mat-label>
+            <input matInput formControlName="emailId" type="email" placeholder="test@ascertia.com" required>
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="49" appearance="outline" floatLabel="always">
+            <mat-label>{{'Contact Number'}}</mat-label>
+            <input matInput placeholder="03**-*******" name="contactNumber" formControlName="contactNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+
+          </mat-form-field>
+
+        </div>
+
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

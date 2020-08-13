@@ -1,0 +1,127 @@
+<div fxLayout="column">
+  <!-- Tool Bar -->
+  <mat-toolbar color="secondary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+
+      <div fxLayout="row" fxLayoutGap="10px" fxFlex fxLayoutAlign="space-between center">
+        <div *ngIf="header!==''">
+          <span class="menu-spacer"></span>
+          <span class="menu-spacer"></span>
+          <span>{{header}}</span>
+        </div>
+        <div *ngIf="header===''">
+          <span>Ascertia App</span>
+          <small>(Assignment of Angular)</small>
+        </div>
+        <span class="menu-spacer"></span>
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container hasBackdrop="false">
+    <mat-sidenav #sidenav mode="over">
+      <mat-nav-list>
+        <span *ngFor="let item of menu">
+
+          <!-- for 1 level -->
+          <span *ngIf="!item.children || item.children.length === 0">
+            <mat-nav-list dense>
+              <a mat-list-item (click)="navigationClicked(item.displayName)" [routerLink]="item.route">
+                <div (click)="sidenav.toggle()" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                  <mat-icon *ngIf="item.iconName">{{item.iconName}}</mat-icon>
+                  <span>
+                    {{item.displayName|uppercase}}
+                  </span>
+                </div>
+              </a>
+            </mat-nav-list>
+          </span>
+
+          <!-- for 2 level -->
+
+          <span *ngIf="item.level=='2nd'&&item.children && item.children.length > 0">
+            <mat-accordion>
+              <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                      <mat-icon *ngIf="item.iconName">{{item.iconName}}</mat-icon>
+                      <span>
+                        {{item.displayName|uppercase}}
+                      </span>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list dense>
+                  <a *ngFor="let child of item.children" mat-list-item (click)="navigationClicked(child.displayName)"
+                    [routerLink]="child.route">
+                    <div (click)="sidenav.toggle()" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                      <mat-icon *ngIf="child.iconName">{{child.iconName}}</mat-icon>
+                      <span>
+                        {{child.displayName}}
+                      </span>
+                    </div>
+                  </a>
+                </mat-nav-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </span>
+
+          <span fxLayout="column" *ngIf="item.level=='3rd'&&item.children && item.children.length > 0">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                    <mat-icon *ngIf="item.iconName">{{item.iconName}}</mat-icon>
+                    <span>
+                      {{item.displayName|uppercase}}
+                    </span>
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <span *ngFor="let child of item.children">
+                <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                        <mat-icon *ngIf="child.iconName">{{child.iconName}}</mat-icon>
+                        <span>
+                          {{child.displayName|uppercase}}
+                        </span>
+                      </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-nav-list dense>
+                    <a *ngFor="let ch of child.children" mat-list-item (click)="navigationClicked(ch.displayName)"
+                      [routerLink]="ch.route">
+                      <div (click)="sidenav.toggle()" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                        <mat-icon *ngIf="ch.iconName">{{ch.iconName}}</mat-icon>
+                        <span>
+                          {{ch.displayName}}
+                        </span>
+                      </div>
+                    </a>
+                  </mat-nav-list>
+                </mat-expansion-panel>
+              </span>
+            </mat-expansion-panel>
+          </span>
+
+
+        </span>
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content (click)="sidenav.close()">
+      <div style="height:91.8vh;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+    
+  </mat-sidenav-container>
+</div>

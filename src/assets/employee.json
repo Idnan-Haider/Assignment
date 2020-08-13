@@ -1,0 +1,60 @@
+{  
+    "Employees": [  
+      {  
+        "id": 1,  
+        "firstName": "Ali",  
+        "lastName": "Ali",  
+        "address": "Hyderabad",  
+        "dateOfBirth": "2013-01-08",  
+        "phoneNo": "8923742593",  
+        "emailId": "Alidotnet@gmail.com"
+      },  
+    
+      {  
+        "id": 2,  
+        "firstName": "Aslam",  
+        "lastName": "Raza",  
+        "address": "Delhi",  
+        "dateOfBirth": "2003-01-08",  
+        "phoneNo": "8923756993",  
+        "emailId": "Aslam@gmail.com"
+      },  
+      {  
+        "id": 3,  
+        "firstName": "Neha",  
+        "lastName": "Kumari",  
+        "address": "Hyderabad",  
+        "dateOfBirth": "2013-01-08",  
+        "phoneNo": "892374293",  
+        "emailId": "neha@gmail.com"
+      },  
+      {  
+        "id": 4,  
+        "firstName": "Rashid",  
+        "lastName": "Ali",  
+        "address": "Cuttack",  
+        "dateOfBirth": "2010-01-08",  
+        "phoneNo": "892374293",  
+        "emailId": "Rashid@gmail.com"
+      },  
+      {  
+        "id": 5,  
+        "firstName": "Kashif",  
+        "lastName": "Rasheed",  
+        "address": "Cuttack",  
+        "dateOfBirth": "2010-01-08",  
+        "phoneNo": "892374293",  
+        "emailId": "Kashif@gmail.com"
+      },  
+      {  
+        "id": 6,  
+        "firstName": "Kiran",  
+        "lastName": "Peerzada",  
+        "address": "Patna",  
+        "dateOfBirth": "2011-01-08",  
+        "phoneNo": "892374293",  
+        "emailId": "Kiran@gmail.com"
+      }  
+    
+    ]
+  }
