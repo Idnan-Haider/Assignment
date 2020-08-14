@@ -1,11 +1,9 @@
-<mat-toolbar class="mat-accent m-0">
-    <strong><span class="title">{{'Confirmation'}}</span></strong>
-</mat-toolbar>
 
-<div class='content'>
+<div class='content' fxLayout="column" fxLayoutGap="10px">
+    <strong><span class="title">{{'Confirmation'}}</span></strong>
     <div fxLayoutAlign="start start" class="buttons"> {{data.message}}</div>
     <div fxLayoutAlign="start end" class="buttons" fxLayoutGap="5px">
-        <button mat-raised-button color='accent' [mat-dialog-close]="true" cdkFocusInitial>{{'Confirm'}}</button>
+        <button mat-raised-button color='primary' [mat-dialog-close]="true" cdkFocusInitial>{{'Confirm'}}</button>
         <button mat-raised-button [mat-dialog-close]="false">{{'Cancel'}}</button>
     </div>
 </div>

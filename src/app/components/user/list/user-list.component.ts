@@ -62,7 +62,7 @@ export class UserListComponent {
   public delete(id) {
     this.matDialog.open(ConfirmDialogComponent, {
       width: '450px',
-      data: { message: 'Do you want Delete it?' }
+      data: { message: 'Do you want to Delete it?' }
     }).afterClosed().subscribe((accept: boolean) => {
       if (accept) {
         this.genericService.delete(`deleteUser/${id}`).subscribe((res: any) => {
